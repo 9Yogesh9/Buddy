@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { AiOutlineLogout } from 'react-icons/ai';
 import { useParams, useNavigate } from 'react-router-dom';
 import { googleLogout } from '@react-oauth/google';
 
@@ -76,7 +75,7 @@ const UserProfile = () => {
           </h1>
           <div className="absolute top-0 z-1 right-0 p-2">
 
-            {userId === User.jti && (
+            {userId === User.aud && (
               <button
                 className=" bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
                 onClick={logout}

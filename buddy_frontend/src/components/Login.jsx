@@ -2,7 +2,6 @@ import React from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc';
 
 import shareVideo from '../assets/share.mp4';
 import logo from '../assets/logowhite.png';
@@ -15,10 +14,10 @@ const Login = () => {
   const responseGoogle = async (response) => {
 
     localStorage.setItem('user', JSON.stringify(response.credential));
-    const { name, jti, picture } = jwt_decode(response.credential);
+    const { name, aud, picture } = jwt_decode(response.credential);
 
     const doc = {
-      _id: jti,
+      _id: aud,
       _type: 'user',
       userName: name,
       image: picture
