@@ -1,6 +1,6 @@
 import React from 'react'
 import Masonry from 'react-masonry-css';
-import {Pin} from './index';
+import { Pin } from './index';
 
 const breakpointObj = {
     // Images to be shown at specific device width
@@ -12,10 +12,10 @@ const breakpointObj = {
     500: 1
 }
 
-const MasonryLayout = ({pins}) => {
+const MasonryLayout = ({ pins }) => {
     return (
         <Masonry className='flex animate-slide-fwd' breakpointCols={breakpointObj}>
-            {pins?.map((pin) => <Pin key={pins._id} pin={pin} className="w-max"/>)}
+            {pins?.map((pin) => <Pin key={Math.round(Math.random()*1000)} pin={pin} className="w-max"/>)}
         </Masonry>
     )
 }

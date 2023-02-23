@@ -97,7 +97,7 @@ const Pin = ({ pin }) => {
                   rel="noreferrer"
                 >
                   <BsFillArrowUpRightCircleFill />
-                  {destination.length > 20 ? destination.slice(8, 20) : destination.slice(8)}
+                  {destination.length > 15 ? `${destination.slice(0, 15)}...` : destination}
                 </a>
               )}
               {
@@ -127,9 +127,9 @@ const Pin = ({ pin }) => {
         <img
           src={postedBy?.image}
           alt="user-profile"
-          className='w-8 h-8 rounded-full object-cover' 
-          />
-          <p className='font-semibold capitalize'>{postedBy?.userName}</p>
+          className='w-8 h-8 rounded-full object-cover'
+        />
+        <p className='font-semibold capitalize'>{postedBy?.userName}</p>
       </Link>
     </div>
   )
