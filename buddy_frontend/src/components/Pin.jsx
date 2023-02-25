@@ -14,7 +14,7 @@ const Pin = ({ pin }) => {
 
   const user = fetchUser();
 
-  let alreadySaved = !!(save?.filter((item) => item?.postedBy?._id === user?.aud))?.length;
+  let alreadySaved = !!(save?.filter((item) => item?.postedBy?._id === user?.sub))?.length;
 
   const deletePin = (id) => {
     client
@@ -32,10 +32,10 @@ const Pin = ({ pin }) => {
         .setIfMissing({ save: [] })
         .insert('after', 'save[-1]', [{
           _key: uuidv4(),
-          userId: user?.aud,
+          userId: user?.sub,
           postedBy: {
             _type: 'postedBy',
-            _ref: user?.aud,
+            _ref: user?.sub,
           },
         }])
         .commit()
@@ -101,7 +101,7 @@ const Pin = ({ pin }) => {
                 </a>
               )}
               {
-                postedBy?._id === user?.aud && (
+                postedBy?._id === user?.sub && (
                   <button
                     type="button"
                     onClick={(e) => {

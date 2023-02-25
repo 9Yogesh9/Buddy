@@ -75,7 +75,7 @@ const UserProfile = () => {
           </h1>
           <div className="absolute top-0 z-1 right-0 p-2">
 
-            {userId === User.aud && (
+            {userId === User.sub && (
               <button
                 className=" bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
                 onClick={logout}

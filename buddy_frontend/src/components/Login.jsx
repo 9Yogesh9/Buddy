@@ -14,17 +14,17 @@ const Login = () => {
   const responseGoogle = async (response) => {
 
     localStorage.setItem('user', JSON.stringify(response.credential));
-    const { name, aud, picture } = jwt_decode(response.credential);
+    const { name, sub, picture } = jwt_decode(response.credential);
 
     const doc = {
-      _id: aud,
+      _id: sub,
       _type: 'user',
       userName: name,
       image: picture
     }
 
     client.createIfNotExists(doc)
-      .then(() => {
+      .then((res) => {
         navigate('/', { replace: true });
       })
       .catch((err) => {
